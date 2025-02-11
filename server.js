@@ -36,16 +36,6 @@ app.get("/user", (req, res) => {
   res.send(users);
 });
 
-app.post("/two-sum", (req, res) => {
-  const { nums } = req.body;
-
-  let a = 0;
-  for (let i = 0; i < nums.length; i++) {
-    a = a + nums[i];
-  }
-  res.send({ a });
-});
-
 app.listen(8080, () => {
   console.log(`Example app listening on port ${8080}`);
 });
