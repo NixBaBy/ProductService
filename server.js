@@ -3,19 +3,19 @@ const app = express();
 const cors = require("cors");
 const { products, productDetail } = require("./utils/profuct");
 
-const bodyParser = require("body-parser");
-app.use(bodyParser());
+app.use(express.json()); // express-ийн json middleware ашиглана
+app.use(express.urlencoded({ extended: true })); // form data илгээхийг дэмжих
 app.use(cors());
+
+let users = [];
+const addUser = (userData) => {
+  users.push(userData); 
+  console.log(users);
+};
 
 app.get("/Products", (req, res) => {
   res.send(products);
 });
-
-let users = [];
-const addUser = (userData) => {
-  users.push(userData);
-  console.log(users);
-};
 
 app.get("/Products/:id", (req, res) => {
   const { id } = req.params;
